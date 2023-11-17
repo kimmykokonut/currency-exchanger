@@ -2,8 +2,9 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import ExchangeService from './services/exchange-service.js';
+import GiphyService from './services/giphy-service.js';
 
-async function getAPIData(currencyTo, howMuchMoney, currencyFrom) {
+async function getAPIData(currencyTo, howMuchMoney, currencyFrom, nameInput) {
   ExchangeService.getExchange(currencyFrom, currencyTo)
     .then(function (exchangeResponse) {
       if (exchangeResponse instanceof Error) {
@@ -12,6 +13,14 @@ async function getAPIData(currencyTo, howMuchMoney, currencyFrom) {
       }
       const convRate = exchangeResponse.conversion_rate;
       printRates(currencyFrom, currencyTo, convRate, howMuchMoney);
+      return GiphyService.getGif(nameInput);
+    })
+    .then(function(giphyResponse) {
+      if (giphyResponse instanceof Error) {
+        const errorMessage = `There was a problem accessing the gif data from Giphy API: ${giphyResponse.message}`;
+        throw new Error(errorMessage);
+      }
+      displayGif(giphyResponse, currencyTo);
     })
     .catch(function (error) {
       printError(error);
@@ -32,15 +41,24 @@ function printCustomError(currencyTo) {
   document.querySelector('#error').innerText = `Sorry, we don't offer exchange rate data for North Korea ${currencyTo} due to sanctions & lack of any international trade.`;
 }
 
+function displayGif(giphyResponse, currencyTo) {
+  const url = giphyResponse.data[0].images.downsized.url;
+  const img = document.createElement('img');
+  img.src = url;
+  img.alt = `${currencyTo} gif`;
+  document.querySelector('#gif').append(img);
+}
+
 function clearResults() {
   document.querySelector('#result').innerText = null;
   document.querySelector('#error').innerText = null;
+  document.querySelector('#gif').innerText = null;
 }
 
 function handleConversionForm(e) {
   e.preventDefault();
   clearResults();
-  // const nameInput = document.querySelector('#nameInput').value;
+  const nameInput = document.querySelector('#nameInput').value;
   const howMuchMoney = document.querySelector('#qtyInput').value;
   document.querySelector('#qtyInput').value = null;
   const currencyFrom = document.getElementById('currencyFrom').value;
@@ -48,7 +66,7 @@ function handleConversionForm(e) {
   if (currencyTo === 'KPW') {
     printCustomError(currencyTo);
   } else {
-    getAPIData(currencyTo, howMuchMoney, currencyFrom);
+    getAPIData(currencyTo, howMuchMoney, currencyFrom, nameInput);
   }
 }
 
