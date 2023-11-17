@@ -1,17 +1,27 @@
-# Template Repository
+# Currency Exchanger (Independent Project)
 
-#### with __tests__, coverage, jest, .env, .gitignore, lint, cleanwebpack, htmlwebpack 
+#### A website where a user can input USD amount and choose up to 5 currencies to exchange, using the exchange rate API _https://www.exchangerate-api.com/_
 
-#### By (Your Name Here)
+#### By Kim Robinson
 
 ## Technologies Used
 
-* _List all_
-* _the major technologies_
-* _you used in your project_
-* _here_
+* Javascript
+* CSS
+* Bootstrap
+* Html
+* webpack
+* npm
+* eslint
+* securing api key with .env
 
 ## Description
+Currency exhange application:
+
+    A user should be able to enter an amount (in U.S. dollars), then specify another currency and submit a form. The user should then see the total amount they entered in converted currency. For example, a user might enter 10 dollars and then see that amount in South Korean won.
+    Users should be able to convert U.S. currency into at least 5 other types of currency.
+    If the API call results in an error (any message not a 200 OK), the application should return a notification to the user that states what the error is (in the DOM). 
+    If the query response doesn't include that particular currency, the application should return a notification that states the currency in question doesn't exist. 
 
 ## Setup/Installation Requirements
 
@@ -20,24 +30,20 @@
 * _in a simple_
 * _easy-to-understand_
 * _format_
-
-## Known Bugs
-
-* _Any known issues_
-* _should go here_
-
-## License
-
-When you create your template repository, take the time to add thorough installation/setup instructions to your README. This should include information on how to run the project:
-
 Installing all packages with $ npm install.
 
 Building the project using webpack with $ npm run build
+* add .env file to store key, set up personal key
 
 Starting a development server with $ npm run start
 
 Linting JS files in the src folder with $ npm run lint
 
-Running tests with Jest using $ npm run test
 
-Also, make sure you update the Technologies Used section of your README, too! There's been a host of new tech that we've used in our projects in this course section.
+## Known Bugs
+
+* None known at this time
+
+## License
+
+MIT License. see license.md for more information
