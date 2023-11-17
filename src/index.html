@@ -8,12 +8,26 @@
 <body>
   <div class="container">
     <h1>Currency Exchanger</h1>
-    <p>To get the current exchange rate, enter a dollar value in USD</p>
+    <p>Enter how much money you want converted and choose which countries to convert between</p>
     <!-- <img class="img-fluid" src="./assets/images/stock-puppy-photo.jpg" alt="brown dog"/> -->
     <form id="currency-exchange-form">
-      <label for="qtyInput">Enter a dollar value:</label>
+      <label for="name">What is your name?</label>
+      <input id="name" type="text">
+      <br>
+      <label for="qtyInput">How much money?</label>
       <input id="qtyInput" type="number">
+      <select name="currencyFrom" id="currencyFrom">
+        <option value="USD">US Dollar</option>
+        <option value="EUR">Euro</option>
+        <option value="CAD">Canadaian dollar</option>
+        <option value="MXN">Mexican peso</option>
+        <option value="THB">Thai baht</option>
+        <option value="GBP">Great British Pound</option>
+      </select>
+      <br>
+      <label for="to">To: </label>
       <select name="currency" id="currency">
+        <option value="USD">US Dollar</option>
         <option value="EUR">Euro</option>
         <option value="CAD">Canadian dollar</option>
         <option value="MXN">Mexican peso</option>

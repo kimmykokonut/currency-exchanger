@@ -3,23 +3,23 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import ExchangeService from './services/exchange-service.js';
 
-async function getAPIData(selectCurrency, howMuchMoney) {
-  ExchangeService.getExchange(selectCurrency)
+async function getAPIData(currencyTo, howMuchMoney, currencyFrom) {
+  ExchangeService.getExchange(currencyFrom,currencyTo)
     .then(function (exchangeResponse) {
       if (exchangeResponse instanceof Error) {
-        const errorMessage = `There was a problem accessing the conversion exchange data from Exchange Rate API for ${selectCurrency}: ${exchangeResponse.message}`;
+        const errorMessage = `There was a problem accessing the conversion exchange data from Exchange Rate API for ${currencyTo}: ${exchangeResponse.message}`;
         throw new Error(errorMessage);
       }
       const convRate = exchangeResponse.conversion_rate;
-      printRates(selectCurrency, convRate, howMuchMoney);
+      printRates(currencyFrom, currencyTo, convRate, howMuchMoney);
     })
     .catch(function (error) {
       printError(error);
     });
 }
 
-function printRates(selectCurrency, convRate, howMuchMoney) {
-  document.querySelector('#result').innerText = `The conversion rate for USD to ${selectCurrency} is ${convRate}. ${howMuchMoney} USD = ${(howMuchMoney * convRate)} ${selectCurrency}.`;
+function printRates(currencyFrom, currencyTo, convRate, howMuchMoney) {
+  document.querySelector('#result').innerText = `The conversion rate for ${currencyFrom} to ${currencyTo} is ${convRate}. ${howMuchMoney} ${currencyFrom} = ${(howMuchMoney * convRate)} ${currencyTo}.`;
 }
 
 function printError(error) {
@@ -36,9 +36,9 @@ function handleConversionForm(e) {
   clearResults();
   const howMuchMoney = document.querySelector('#qtyInput').value;
   document.querySelector('#qtyInput').value = null;
-  const selectCurrency = document.getElementById('currency').value;
-  getAPIData(selectCurrency, howMuchMoney);  //assume start usd at this point. maybe add second param later
-  //--------------------------
+  const currencyFrom = document.getElementById('currencyFrom').value;
+  const currencyTo = document.getElementById('currency').value;
+  getAPIData(currencyTo, howMuchMoney, currencyFrom);
 }
 
 window.addEventListener("load", function () {
