@@ -4,7 +4,7 @@ import './css/styles.css';
 import ExchangeService from './services/exchange-service.js';
 
 async function getAPIData(currencyTo, howMuchMoney, currencyFrom) {
-  ExchangeService.getExchange(currencyFrom,currencyTo)
+  ExchangeService.getExchange(currencyFrom, currencyTo)
     .then(function (exchangeResponse) {
       if (exchangeResponse instanceof Error) {
         const errorMessage = `There was a problem accessing the conversion exchange data from Exchange Rate API for ${currencyTo}: ${exchangeResponse.message}`;
@@ -26,6 +26,10 @@ function printError(error) {
   document.querySelector('#error').innerText = error;
 }
 
+function printCustomError(currencyTo) {
+  document.querySelector('#error').innerText = `Sorry, we don't offer exchange rate data for North Korea ${currencyTo} due to sanctions & lack of any international trade.`;
+}
+
 function clearResults() {
   document.querySelector('#result').innerText = null;
   document.querySelector('#error').innerText = null;
@@ -38,7 +42,11 @@ function handleConversionForm(e) {
   document.querySelector('#qtyInput').value = null;
   const currencyFrom = document.getElementById('currencyFrom').value;
   const currencyTo = document.getElementById('currency').value;
-  getAPIData(currencyTo, howMuchMoney, currencyFrom);
+  if (currencyTo === 'KPW') {
+    printCustomError(currencyTo);
+  } else {
+    getAPIData(currencyTo, howMuchMoney, currencyFrom);
+  }
 }
 
 window.addEventListener("load", function () {
