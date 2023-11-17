@@ -38,6 +38,7 @@ function clearResults() {
 function handleConversionForm(e) {
   e.preventDefault();
   clearResults();
+  // const nameInput = document.querySelector('#nameInput').value;
   const howMuchMoney = document.querySelector('#qtyInput').value;
   document.querySelector('#qtyInput').value = null;
   const currencyFrom = document.getElementById('currencyFrom').value;
