@@ -13,6 +13,7 @@
 * webpack
 * npm
 * eslint
+* babel
 * securing api key with .env
 
 ## Description
