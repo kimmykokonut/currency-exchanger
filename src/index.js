@@ -19,7 +19,9 @@ async function getAPIData(currencyTo, howMuchMoney, currencyFrom) {
 }
 
 function printRates(currencyFrom, currencyTo, convRate, howMuchMoney) {
-  document.querySelector('#result').innerText = `The conversion rate for ${currencyFrom} to ${currencyTo} is ${convRate}. ${howMuchMoney} ${currencyFrom} = ${(howMuchMoney * convRate)} ${currencyTo}.`;
+  (document.getElementById('answers')).setAttribute("class", "card");
+  document.querySelector('#result').innerText = `The conversion rate for ${currencyFrom} to ${currencyTo} is ${convRate}. 
+  ${howMuchMoney} ${currencyFrom} = ${(howMuchMoney * convRate)} ${currencyTo}.`;
 }
 
 function printError(error) {

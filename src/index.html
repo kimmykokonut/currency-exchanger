@@ -10,63 +10,75 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container-fluid">
     <img class="img-fluid" src="./assets/images/euro.jpg" alt="Euro bills scattered" />
     <h1>Currency Exchanger</h1>
     <p>Enter how much money you want converted and choose which countries to convert between</p>
-    <form id="currency-exchange-form">
-      <div id="name">
-        <label for="nameInput">What is your first name?</label>
-        <input id="nameInput" type="text" placeholder="Cardi">
+    <div class="row text-center">
+      <form id="currency-exchange-form">
+        <div id="name" class="text-center">
+          <label for="nameInput">What is your first name?</label>
+          <input id="nameInput" type="text" placeholder="Cardi">
+        </div>
+        <div class="row">
+          <div id="from" class="col-lg-5 border border-success m-1 p-2">
+            <label for="qtyInput">How much money?</label>
+            <input id="qtyInput" type="number">
+            <select name="currencyFrom" id="currencyFrom">
+              <option value="USD">US Dollar</option>
+              <option value="EUR">Euro</option>
+              <option value="CAD">Canadian dollar</option>
+              <option value="MXN">Mexican peso</option>
+              <option value="THB">Thai baht</option>
+              <option value="GBP">Great British Pound</option>
+              <option value="AED">United Arab Emirates Dirham</option>
+              <option value="AFN">Afghan Afghani</option>
+              <option value="ALL">Albanian Lek</option>
+              <option value="AMD">Armenian Dram</option>
+              <option value="ANG">Netherlands Antillian Guilder</option>
+              <option value="AOA">Angolan Kwanza</option>
+              <option value="ARS">Argentine Peso</option>
+              <option value="AUD">Australian Dollar</option>
+              <option value="AWG">Aruban Florin</option>
+              <option value="AZN">Azerbaijani Manat</option>
+            </select>
+          </div>
+          <div id="to" class="col-lg-5 border border-success m-1 p-2">
+            <label for="to">To: </label>
+            <select name="currency" id="currency">
+              <option value="KPW">North Korean Wan</option>
+              <option value="USD">US Dollar</option>
+              <option value="EUR">Euro</option>
+              <option value="CAD">Canadian dollar</option>
+              <option value="MXN">Mexican peso</option>
+              <option value="THB">Thai baht</option>
+              <option value="GBP">Great British Pound</option>
+              <option value="AED">United Arab Emirates Dirham</option>
+              <option value="AFN">Afghan Afghani</option>
+              <option value="ALL">Albanian Lek</option>
+              <option value="AMD">Armenian Dram</option>
+              <option value="ANG">Netherlands Antillian Guilder</option>
+              <option value="AOA">Angolan Kwanza</option>
+              <option value="ARS">Argentine Peso</option>
+              <option value="AUD">Australian Dollar</option>
+              <option value="AWG">Aruban Florin</option>
+              <option value="AZN">Azerbaijani Manat</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" id="convert" class="btn btn-success">Submit<i class="fa-solid fa-coins"></i></button>
+      </form>
+    </div>
+    <div class="m-5 p-5 col-auto" id="answers">
+      <div class="card-body">
+        <div class="row">
+          <div class="class=" col-auto d-flex align-items-center">
+            <h4 id="result"></h4>
+            <h5 id="error"></h5>
+          </div>
+        </div>
       </div>
-      <div id="from">
-        <label for="qtyInput">How much money?</label>
-        <input id="qtyInput" type="number">
-        <select name="currencyFrom" id="currencyFrom">
-          <option value="USD">US Dollar</option>
-          <option value="EUR">Euro</option>
-          <option value="CAD">Canadian dollar</option>
-          <option value="MXN">Mexican peso</option>
-          <option value="THB">Thai baht</option>
-          <option value="GBP">Great British Pound</option>
-          <option value="AED">United Arab Emirates Dirham</option>
-          <option value="AFN">Afghan Afghani</option>
-          <option value="ALL">Albanian Lek</option>
-          <option value="AMD">Armenian Dram</option>
-          <option value="ANG">Netherlands Antillian Guilder</option>
-          <option value="AOA">Angolan Kwanza</option>
-          <option value="ARS">Argentine Peso</option>
-          <option value="AUD">Australian Dollar</option>
-          <option value="AWG">Aruban Florin</option>
-          <option value="AZN">Azerbaijani Manat</option>
-        </select>
-      </div>
-      <div id="to">
-        <label for="to">To: </label>
-        <select name="currency" id="currency">
-          <option value="KPW">North Korean Wan</option>
-          <option value="USD">US Dollar</option>
-          <option value="EUR">Euro</option>
-          <option value="CAD">Canadian dollar</option>
-          <option value="MXN">Mexican peso</option>
-          <option value="THB">Thai baht</option>
-          <option value="GBP">Great British Pound</option>
-          <option value="AED">United Arab Emirates Dirham</option>
-          <option value="AFN">Afghan Afghani</option>
-          <option value="ALL">Albanian Lek</option>
-          <option value="AMD">Armenian Dram</option>
-          <option value="ANG">Netherlands Antillian Guilder</option>
-          <option value="AOA">Angolan Kwanza</option>
-          <option value="ARS">Argentine Peso</option>
-          <option value="AUD">Australian Dollar</option>
-          <option value="AWG">Aruban Florin</option>
-          <option value="AZN">Azerbaijani Manat</option>
-        </select>
-      </div>
-      <button type="submit" id="convert" class="btn btn-success">Submit<i class="fa-solid fa-coins"></i></button>
-    </form>
-    <p id="result"></p>
-    <p id="error"></p>
+    </div>
   </div>
 </body>
 
