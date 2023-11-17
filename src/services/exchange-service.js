@@ -3,13 +3,17 @@ export default class ExchangeService {
     return fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/${currencyFrom}/${currencyTo}`)
       .then(function (response) {
         if (!response.ok) {
-          const errorMessage = `${response.status} ${response.statusText}`;
-          throw new Error(errorMessage);
+          return response.json()
+            .then(function (apiErrorMsg) {
+              const errorMessage = `${response.status} ${response.statusText} ${apiErrorMsg['error-type']}`;
+              throw new Error(errorMessage);
+            });
         } else {
           return response.json();
         }
       })
       .catch(function (error) {
+        console.log(error);
         return error;
       });
   }
