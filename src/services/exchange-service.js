@@ -5,7 +5,7 @@ export default class ExchangeService {
         if (!response.ok) {
           return response.json()
             .then(function (apiErrorMsg) {
-              console.log(apiErrorMsg);
+              // console.log(apiErrorMsg);
               const errorMessage = `${response.status} ${response.statusText} ${apiErrorMsg['error-type']}`;
               throw new Error(errorMessage);
             });

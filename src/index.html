@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-<head>
-  <title>Currency Exchanger</title>
+<head></head>
+<script id="fontAwe"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Cardo&display=swap" rel="stylesheet">
+<title>Currency Exchanger</title>
 </head>
 
 <body>
   <div class="container">
+    <img class="img-fluid" src="./assets/images/euro.jpg" alt="Euro bills scattered" />
     <h1>Currency Exchanger</h1>
     <p>Enter how much money you want converted and choose which countries to convert between</p>
-    <!-- <img class="img-fluid" src="./assets/images/stock-puppy-photo.jpg" alt="brown dog"/> -->
     <form id="currency-exchange-form">
       <div id="name">
-        <label for="nameInput">What is your name?</label>
-        <input id="nameInput" type="text">
+        <label for="nameInput">What is your first name?</label>
+        <input id="nameInput" type="text" placeholder="Cardi">
       </div>
       <div id="from">
         <label for="qtyInput">How much money?</label>
@@ -59,7 +63,7 @@
           <option value="AZN">Azerbaijani Manat</option>
         </select>
       </div>
-      <button type="submit" id="convert" class="btn btn-success">Submit</button>
+      <button type="submit" id="convert" class="btn btn-success">Submit<i class="fa-solid fa-coins"></i></button>
     </form>
     <p id="result"></p>
     <p id="error"></p>

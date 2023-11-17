@@ -51,5 +51,8 @@ function handleConversionForm(e) {
 }
 
 window.addEventListener("load", function () {
+  const icon = document.querySelector('#fontAwe');
+  icon.src = `${process.env.FONT_KEY}`;
+  icon.crossorigin = `${process.env.FONT_CO}`;
   document.querySelector("#currency-exchange-form").addEventListener("submit", handleConversionForm);
 });
