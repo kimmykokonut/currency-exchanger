@@ -15,9 +15,9 @@ async function getAPIData(currencyTo, howMuchMoney, currencyFrom, nameInput) {
       printRates(currencyFrom, currencyTo, convRate, howMuchMoney);
       return GiphyService.getGif(nameInput);
     })
-    .then(function(giphyResponse) {
+    .then(function (giphyResponse) {
       if (giphyResponse instanceof Error) {
-        const errorMessage = `There was a problem accessing the gif data from Giphy API: ${giphyResponse.message}`;
+        const errorMessage = `There was a problem accessing the gif data from Giphy API: ${giphyResponse.message} Please enter your name!`;
         throw new Error(errorMessage);
       }
       displayGif(giphyResponse, currencyTo);
@@ -29,7 +29,8 @@ async function getAPIData(currencyTo, howMuchMoney, currencyFrom, nameInput) {
 
 function printRates(currencyFrom, currencyTo, convRate, howMuchMoney) {
   (document.getElementById('answers')).setAttribute("class", "card");
-  document.querySelector('#result').innerText = `The conversion rate for ${currencyFrom} to ${currencyTo} is ${convRate}. 
+  document.querySelector('#result').innerText = `The conversion rate for ${currencyFrom} to ${currencyTo} is ${convRate}
+
   ${howMuchMoney} ${currencyFrom} = ${(howMuchMoney * convRate)} ${currencyTo}.`;
 }
 
