@@ -17,7 +17,7 @@ async function getAPIData(currencyTo, howMuchMoney, currencyFrom, nameInput) {
     })
     .then(function (giphyResponse) {
       if (giphyResponse instanceof Error) {
-        const errorMessage = `There was a problem accessing the gif data from Giphy API: ${giphyResponse.message} Please enter your name!`;
+        const errorMessage = `There was a problem accessing the gif data from Giphy API: ${giphyResponse.message}`;
         throw new Error(errorMessage);
       }
       displayGif(giphyResponse, currencyTo);

@@ -50,7 +50,8 @@ Optional:
 
 ## Known Bugs
 
-* None known at this time
+* If no value is in the input, the answer is 0
+* If no name is entered, get: TypeError: giphyResponse.data[0] is undefined.
 
 ## License
 
