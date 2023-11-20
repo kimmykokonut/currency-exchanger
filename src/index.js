@@ -59,7 +59,10 @@ function clearResults() {
 function handleConversionForm(e) {
   e.preventDefault();
   clearResults();
-  const nameInput = document.querySelector('#nameInput').value;
+  let nameInput = document.querySelector('#nameInput').value;
+  if (nameInput === '') {
+    nameInput = 'money';
+  }
   const howMuchMoney = document.querySelector('#qtyInput').value;
   document.querySelector('#qtyInput').value = null;
   const currencyFrom = document.getElementById('currencyFrom').value;
