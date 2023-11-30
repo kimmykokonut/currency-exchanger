@@ -39,7 +39,7 @@ Currency exhange application:
 11. To see it rendered in a browser you can start a development server by typing $ npm run start in the VS Code terminal and it should open a browser window located at localhost.8080
 12. Have fun!
 
-_If this is too much and you just want to see what it looks like, go to my github pages for this project here: https://kimmykokonut.github.io/galactic-age-calculator_
+_If this is too much and you just want to see what it looks like, go to my github pages for this project here: https://kimmykokonut.github.io/currency-exchanger_
 
 Optional:
 
